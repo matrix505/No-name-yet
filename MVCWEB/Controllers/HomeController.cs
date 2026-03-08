@@ -8,13 +8,25 @@ namespace MVCWEB.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly AppDbContext _dbContext;
+
+        public HomeController(ILogger<HomeController> logger, AppDbContext context)
         {
             _logger = logger;
+            _dbContext = context;
         }
 
         public IActionResult Index()
         {
+            try
+            {
+                _dbContext.SaveChanges();
+                _logger.LogInformation("GEGEGE");
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "Error saving database");
+            }
             return View();
         }
 

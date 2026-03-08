@@ -1,7 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using MVCWEB.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+/** |                           |
+ *  |   DATABASE CONFIGURATION  |
+ *  |                           |
+ */ 
+var connectionString =
+    builder.Configuration.GetConnectionString("CloudSqlDb");
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
@@ -19,6 +30,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
 
 app.MapControllerRoute(
     name: "default",
