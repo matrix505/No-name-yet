@@ -1,5 +1,5 @@
 
-using Microsoft.EntityFrameworkCore;
+
 using MVCWEB.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,9 +10,8 @@ builder.Services.AddControllersWithViews();
 /** |                           |
  *  |   DATABASE CONFIGURATION  |
  *  |                           |
- */ 
-var connectionString = builder.Configuration.GetConnectionString("CloudSqlDb");
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+ */
+builder.Services.AddSingleton<DapperContext>();
 
 builder.Services.AddSignalR();
 
