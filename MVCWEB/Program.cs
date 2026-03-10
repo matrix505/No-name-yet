@@ -1,6 +1,6 @@
-
-
 using MVCWEB.Data;
+using MVCWEB.Services;
+using MVCWEB.Services.Abstract;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +12,8 @@ builder.Services.AddControllersWithViews();
  *  |                           |
  */
 builder.Services.AddSingleton<DapperContext>();
+
+builder.Services.AddScoped<IItemService, ItemService>();
 
 builder.Services.AddSignalR();
 
