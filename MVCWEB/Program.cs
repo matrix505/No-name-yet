@@ -1,22 +1,25 @@
-using MVCWEB.Data;
-using MVCWEB.Services;
-using MVCWEB.Services.Abstract;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using MVCWEB.Extensions.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add collection of services
 builder.Services.AddControllersWithViews();
+builder.Services.AddApplicationServices(); //custom from extensions
+builder.Services.AddRepositoryServices();  //custom from extensions
 
-/** |                           |
- *  |   DATABASE CONFIGURATION  |
- *  |                           |
- */
-builder.Services.AddSingleton<DapperContext>();
-
-builder.Services.AddScoped<IItemService, ItemService>();
-
-builder.Services.AddSignalR();
-
+// TODO : Authentication config 
+builder.Services.
+    AddAuthentication(
+    CookieAuthenticationDefaults
+    .AuthenticationScheme)
+    .AddCookie(options =>
+        {
+            options.LoginPath = "/auth/login";
+            options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+            options.SlidingExpiration = true;
+        }
+    );
 
 var app = builder.Build();
 
@@ -33,6 +36,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 

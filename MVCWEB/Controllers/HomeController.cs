@@ -1,29 +1,24 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-
-using MVCWEB.Models;
-using MVCWEB.Services.Abstract;
+using MVCWEB.ViewModel;
 
 namespace MVCWEB.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IItemService _itemService;
+ 
 
         public HomeController(
-            ILogger<HomeController> logger,
-            IItemService itemService
+            ILogger<HomeController> logger
             )
         {
             _logger = logger;
-            _itemService = itemService;
+         
         }
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var items = await _itemService.GetItems();
-
-            return View(items);
+            return View();
         }
         public IActionResult Privacy()
         {
