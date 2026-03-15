@@ -3,3 +3,87 @@
 *@
 @{
 }
+
+<div class="sidebar">
+
+    <div class="navbar-toggler">
+        <i class="bx bx-menu-close"></i>
+    </div>
+
+
+    <div class="sidebar-profile">
+    </div>
+
+
+    <ul class="sidebar-nav flex-grow-1">
+
+        <li class="sidenav-item">
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                <i class="bx bx-user-circle"></i>
+                <span class="links_name">Profile</span>
+            </a>
+        </li>
+
+        <li class="sidenav-item">
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                <i class="bx bx-folder"></i>
+                <span class="links_name">My Projects</span>
+            </a>
+        </li>
+
+        <li class="sidenav-item">
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                <i class="bx bx-folder-check"></i>
+                <span class="links_name">Joined Projects</span>
+            </a>
+        </li>
+
+
+        <li class="sidenav-item">
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                <i class="bx bx-folder-search"></i>
+                <span class="links_name">Browse Projects</span>
+            </a>
+        </li>
+
+        <li class="sidenav-item">
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                <i class="bx bx-folder-plus"></i>
+                <span class="links_name">Create Project</span>
+            </a>
+        </li>
+
+        <li class="sidenav-item">
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                <i class="bx bx-envelope"></i>
+                <span class="links_name">Join Requests</span>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+<script>
+            document.addEventListener("DOMContentLoaded", function() {
+        const sidebar = document.querySelector(".sidebar");
+        const toggler = document.querySelector(".navbar-toggler");
+
+        toggler.addEventListener("click", () => {
+            sidebar.classList.toggle("collapsed");
+
+
+            const icon = toggler.querySelector("i");
+            if (sidebar.classList.contains("collapsed")) {
+                icon.classList.replace("bx-menu-close", "bx-menu");
+            } else {
+                icon.classList.replace("bx-menu", "bx-menu-close");
+            }
+        });
+    });
+</script>
+@section PageStyles {
+    <link rel="stylesheet" href="~/css/sidenavbar.css" type="text/css" />
+    <link href='https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css' rel='stylesheet'>
+    <link href='https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+}
