@@ -1,6 +1,6 @@
 # Student Project Collaboration Hub 0.9
 
-![Alt](https://repobeats.axiom.co/api/embed/5f1766a11bdce525dc4e579bcc39dcc82968b1a3.svg "Repobeats analytics image")
-
+<h4>Project overview</h4>
+Stubu is a student project collaboration hub web-based platform that helps students find teammates for academic or personal projects.
 <h4>Project tech-stack</h4>
 <img src="https://skillicons.dev/icons?i=cs,javascript,html,css,bootstrap,mysql" />
